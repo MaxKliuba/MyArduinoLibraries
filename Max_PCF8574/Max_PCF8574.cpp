@@ -14,7 +14,6 @@ Max_PCF8574::Max_PCF8574() {
 	_bitModeMask = B11111111;
 } 
 
-
 void Max_PCF8574::begin(uint8_t address) {
 	_address = address;
 	#if defined (TINY_WIRE)
@@ -23,7 +22,6 @@ void Max_PCF8574::begin(uint8_t address) {
 		Wire.begin();
 	#endif
 }
-
 
 void Max_PCF8574::setBitMode(uint8_t bit, uint8_t mode) {
 	if (bit < 0 || bit > 7) {
@@ -40,11 +38,9 @@ void Max_PCF8574::setBitMode(uint8_t bit, uint8_t mode) {
 	}
 }
 
-
 void Max_PCF8574::setBitModeMask(uint8_t bitModeMask) {
 	_bitModeMask = bitModeMask;
 }
-
 
 void Max_PCF8574::setBit(uint8_t bit, bool value) {
 	if (bit < 0 || bit > 7) {
@@ -59,7 +55,6 @@ void Max_PCF8574::setBit(uint8_t bit, bool value) {
 	}
 }
 
-
 void Max_PCF8574::setByte(uint8_t value) {
 	if (_address == 0) {
 		return;
@@ -69,11 +64,9 @@ void Max_PCF8574::setByte(uint8_t value) {
 	i2cWrite(_currentByte);
 }
 
-
 uint8_t Max_PCF8574::getByte() {
 	return i2cRead();
 }
-
 
 bool Max_PCF8574::getBit(uint8_t bit) {
 	if (bit < 0 || bit > 7) {
@@ -83,6 +76,27 @@ bool Max_PCF8574::getBit(uint8_t bit) {
 	uint8_t byteValue = getByte();
 
 	return (byteValue & (1<<bit)) != 0;
+}
+
+
+void Max_PCF8574::pinMode(uint8_t pin, uint8_t mode) {
+	setBitMode(pin, mode);
+}
+
+void Max_PCF8574::digitalWrite(uint8_t pin, bool value) {
+	setBit(pin, value);
+}
+		
+void Max_PCF8574::write(uint8_t value) {
+	setByte(value);
+}
+		
+bool Max_PCF8574::digitalRead(uint8_t pin) {
+	return getBit(pin);
+}
+
+uint8_t Max_PCF8574::read() {
+	return getByte();
 }
 
 
@@ -97,7 +111,6 @@ void Max_PCF8574::i2cWrite(uint8_t value) {
 		Wire.endTransmission();
 	#endif
 }
-
 
 uint8_t Max_PCF8574::i2cRead() {
 	#if defined (TINY_WIRE)

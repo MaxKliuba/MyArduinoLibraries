@@ -21,6 +21,11 @@ getByte	KEYWORD2
 getBit	KEYWORD2
 setPWMConfig	KEYWORD2
 setBitPWM	KEYWORD2
+pinMode	KEYWORD2
+digitalWrite	KEYWORD2
+write	KEYWORD2
+digitalRead	KEYWORD2
+read	KEYWORD2
 
 ##########################################
 # Constants (LITERAL1)

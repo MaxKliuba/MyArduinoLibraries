@@ -21,18 +21,18 @@ class Max_PCF8574 {
 		Max_PCF8574();
 
 		void begin(uint8_t address);
-
 		void setBitMode(uint8_t bit, uint8_t mode);
-
 		void setBitModeMask(uint8_t bitModeMask);
-
 		void setBit(uint8_t bit, bool value);
-
 		void setByte(uint8_t value);
-
+		bool getBit(uint8_t bit);
 		uint8_t getByte();
 
-		bool getBit(uint8_t bit);
+		void pinMode(uint8_t pin, uint8_t mode);
+		void digitalWrite(uint8_t pin, bool value);
+		void write(uint8_t value);
+		bool digitalRead(uint8_t pin);
+		uint8_t read();
 
 	private:
 		int _address;
@@ -40,6 +40,5 @@ class Max_PCF8574 {
 		uint8_t _bitModeMask;
 
 		void i2cWrite(uint8_t value);
-
 		uint8_t i2cRead();
 	};

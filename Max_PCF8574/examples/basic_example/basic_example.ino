@@ -26,7 +26,9 @@ void setup() {
 
   expander.setBitMode(LED_PIN, OUTPUT_BIT);
   expander.setBitMode(BUTTON_PIN, INPUT_BIT);
-//  expander.setBitModeMask(0b01000000); // INPUT_BIT = 1; OUTPUT_BIT = 0;
+  
+//  expander.setBitModeMask(0b01000000); // void; INPUT_BIT = 1; OUTPUT_BIT = 0;
+//  expander.pinMode(LED_PIN, OUTPUT_BIT); // void
 }
 
 void loop() {
@@ -39,7 +41,11 @@ void loop() {
     expander.setBit(LED_PIN, HIGH);
   }
 
-
-//  byte byteValue = expander.getByte();
-//  expander.setByte(0b00000000);
+//  expander.getByte(); // returns byte
+//  expander.setByte(0b00000000); // void
+//  
+//  expander.digitalRead(BUTTON_PIN); // returns bool
+//  expander.read(); // returns byte
+//  expander.digitalWrite(LED_PIN, LOW); // void
+//  expander.write(0b00000000); // void
 }
